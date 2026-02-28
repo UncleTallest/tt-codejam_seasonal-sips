@@ -1,3 +1,4 @@
+/** @vitest-environment jsdom */
 import { render, screen, fireEvent } from "@testing-library/react";
 import App from "../App/App";
 import { expect, test, describe } from "vitest";
@@ -18,20 +19,18 @@ describe("Drink Filtering Logic", () => {
     });
     expect(initialDrinks.length).toBeGreaterThan(0);
 
-    // Use and pick one if multiple exist, or be more specific. 
-    // Given the previous error, let's use getByRole which is preferred.
+    // Filter by Vodka
     const vodkaCheckbox = screen.getByRole("checkbox", { name: "Vodka" });
     fireEvent.click(vodkaCheckbox);
 
     // Check if Lemon Drop (known Vodka drink) is visible
     expect(screen.getByText(/Lemon Drop/i)).toBeInTheDocument();
 
-    // Check if Bourbon drink is NOT visible (or at least filtered out)
+    // Check if Bourbon drink is NOT visible
     const filteredDrinks = screen.getAllByRole("heading", { level: 4 });
     const drinkNames = filteredDrinks.map((h) => h.textContent);
     
     expect(drinkNames).toContain("Lemon Drop");
-    // "Bourbon and Peach Smash" should not be here
     expect(drinkNames).not.toContain("Bourbon and Peach Smash");
   });
 
@@ -44,7 +43,7 @@ describe("Drink Filtering Logic", () => {
     const springBtn = screen.getByRole("button", { name: /Spring/i });
     fireEvent.click(springBtn);
 
-    // Select Gin (exact match to avoid "Ginger Beer")
+    // Select Gin
     const ginCheckbox = screen.getByRole("checkbox", { name: "Gin" });
     fireEvent.click(ginCheckbox);
 
