@@ -22,12 +22,11 @@
     "@babel/plugin-proposal-private-property-in-object": "7.21.0",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
-    "@vitejs/plugin-react": "^4.3.4",
-    "@vitest/ui": "^3.0.7",
-    "gh-pages": "^6.1.1",
+    "@vitejs/plugin-react": "^5.1.4",
+    "@vitest/ui": "^4.0.18",
     "jsdom": "^22.1.0",
     "vite": "^7.3.1",
-    "vitest": "^3.0.7"
+    "vitest": "^4.0.18"
   },
   "scripts": {
     "start": "vite",
@@ -35,8 +34,6 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "dev": "vite"
   },
   "eslintConfig": {
